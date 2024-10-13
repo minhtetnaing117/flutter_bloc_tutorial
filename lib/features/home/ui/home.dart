@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
 
-        title: Text('Grocery App'),
+        title: const Text('Grocery App'),
       ),
     );
   }
