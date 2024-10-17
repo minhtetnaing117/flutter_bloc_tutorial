@@ -31,6 +31,7 @@ class _HomeState extends State<Home> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.teal,
             title: const Text('Grocery App'),
             actions: [
               IconButton(
