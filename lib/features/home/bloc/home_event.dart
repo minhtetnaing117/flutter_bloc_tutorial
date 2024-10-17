@@ -19,6 +19,6 @@ class HomeWishlistButtonNavigateEvent extends HomeEvent{
 }
 
 
-class HomCartButtonNavigateEvent extends HomeEvent{
+class HomeCartButtonNavigateEvent extends HomeEvent{
   
 }
