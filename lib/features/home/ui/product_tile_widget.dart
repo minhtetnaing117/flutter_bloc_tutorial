@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc_tutorial/features/home/models/home_product_data_model.dart';
@@ -11,15 +13,51 @@ class ProductTileWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.black),
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 200,
-            width: double.maxFinite,
+              height: 200,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(productDataModel.imageUrl),
+              ))),
+          Text(
+            productDataModel.name,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-        Text(productDataModel.name),
-        Text(productDataModel.description),
-      ],
+          Text(productDataModel.description),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '\$ '+productDataModel.price.toString(),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        // homeBloc.add(HomeWishlistButtonNavigateEvent());
+                      },
+                      icon: Icon(Icons.favorite_border)),
+                  IconButton(
+                      onPressed: () {
+                        // homeBloc.add(HomeCartButtonNavigateEvent());
+                      },
+                      icon: Icon(Icons.shopping_bag_outlined)),
+                ],
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }
