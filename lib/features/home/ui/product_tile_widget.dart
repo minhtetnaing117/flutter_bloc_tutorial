@@ -8,7 +8,8 @@ import 'package:flutter_bloc_tutorial/features/home/models/home_product_data_mod
 class ProductTileWidget extends StatelessWidget {
   final ProductDataModel productDataModel;
   final HomeBloc homeBloc;
-  const ProductTileWidget({super.key, required this.productDataModel, required this.homeBloc});
+  const ProductTileWidget(
+      {super.key, required this.productDataModel, required this.homeBloc});
 
   @override
   Widget build(BuildContext context) {
@@ -40,23 +41,25 @@ class ProductTileWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '\$ '+productDataModel.price.toString(),
+                '\$ ' + productDataModel.price.toString(),
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
                   IconButton(
                       onPressed: () {
-                        homeBloc.add(HomeProductWishlistButtonClickedEvent());
+                        homeBloc.add(HomeProductWishlistButtonClickedEvent(
+                            clickedProduct: productDataModel));
                       },
                       icon: Icon(Icons.favorite_border)),
                   IconButton(
                       onPressed: () {
-                        homeBloc.add(HomeProductCartButtonClickedEvent());
+                        homeBloc.add(HomeProductCartButtonClickedEvent(
+                            clickedProduct: productDataModel));
                       },
                       icon: Icon(Icons.shopping_bag_outlined)),
                 ],
-                ),
+              ),
             ],
           ),
         ],
